@@ -30,4 +30,29 @@ router.post('/save', async (req, res) => {
     }
 });
 
+//Get all user api---------->
+router.get('/all', async(req, res)=>{
+
+});
+
+//Get random user api------->
+router.get('/random', async(req, res)=>{
+
+});
+
+//Update one user----------------->
+router.patch('/update', async(req, res)=>{
+
+});
+
+// Update multi user-------->
+router.patch('/bulk-update', async(req, res)=>{
+
+});
+
+//Delete a user-------->
+router.delete('/delete', async(req, res)=>{
+
+});
+
 module.exports = router;
