@@ -32,7 +32,12 @@ router.post('/save', async (req, res) => {
 
 //Get all user api---------->
 router.get('/all', async(req, res)=>{
-
+    try {
+        const users = await User.find().clone()
+        res.send(users)
+    } catch (error) {
+        console.log('Error::', error)
+    }
 });
 
 //Get random user api------->
