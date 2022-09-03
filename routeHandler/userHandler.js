@@ -43,7 +43,8 @@ router.get('/all', async(req, res)=>{
 
 //Get random user api------->
 router.get('/random', async(req, res)=>{
-    await User.find().Math.random() * User.length;
+    const randomUser = await User.find().Math.random() * User.length;
+    res.send(randomUser);
 });
 
 //Update one user----------------->
