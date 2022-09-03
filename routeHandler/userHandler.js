@@ -49,7 +49,7 @@ router.get('/random', async(req, res)=>{
 router.patch('/update/:id', async(req, res)=>{
     try{
         const _id = req.params.id;
-        const updateUser = await User.findByIdAndUpdate(_id, req.body, {new: true});
+        const updateUser = await User.findByIdAndUpdate(_id, req.body, {new: true, useFindAndModify: false});
         res.send(updateUser)
     }
     catch(error){
@@ -63,8 +63,19 @@ router.patch('/bulk-update', async(req, res)=>{
 });
 
 //Delete a user-------->
-router.delete('/delete', async(req, res)=>{
-
+router.delete('/delete/:id', async(req, res)=>{
+    await User.deleteOne({_id: req.params.id}, (err)=>{
+        if(err){
+            res.status(500).json({
+                error: 'There was a server side error'
+            });
+        } else{
+            res.status(200).json({
+                
+                message: 'User Deleted successfully'
+            });
+        }
+     })
 });
 
 module.exports = router;
