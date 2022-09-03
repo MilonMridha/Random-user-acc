@@ -29,7 +29,7 @@ mongoose
 
 
 app.get('/', (req, res) => {
-  res.status(200).send('Dein Hausman Server is Running');
+  res.status(200).send('Random User Server is Running');
 })
 
 // application routes-------->
