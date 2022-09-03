@@ -33,7 +33,7 @@ router.post('/save', async (req, res) => {
 //Get all user api---------->
 router.get('/all', async(req, res)=>{
     try {
-        const users = await User.find().clone()
+        const users = await User.find()
         res.send(users)
     } catch (error) {
         console.log('Error::', error)
@@ -46,8 +46,15 @@ router.get('/random', async(req, res)=>{
 });
 
 //Update one user----------------->
-router.patch('/update', async(req, res)=>{
-
+router.patch('/update/:id', async(req, res)=>{
+    try{
+        const _id = req.params.id;
+        const updateUser = await User.findByIdAndUpdate(_id, req.body, {new: true});
+        res.send(updateUser)
+    }
+    catch(error){
+        console.log("Error::", error)
+    }
 });
 
 // Update multi user-------->
