@@ -59,7 +59,14 @@ router.patch('/update/:id', async(req, res)=>{
 
 // Update multi user-------->
 router.patch('/bulk-update', async(req, res)=>{
-
+    try{
+        const _id = req.params.id;
+        const updateUser = await User.updateMany({}, req.body, {new: true, useFindAndModify: false});
+        res.send(updateUser)
+    }
+    catch(error){
+        console.log("Error::", error)
+    }
 });
 
 //Delete a user-------->
@@ -75,7 +82,7 @@ router.delete('/delete/:id', async(req, res)=>{
                 message: 'User Deleted successfully'
             });
         }
-     })
+     }).clone()
 });
 
 module.exports = router;
