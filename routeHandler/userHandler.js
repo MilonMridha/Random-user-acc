@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const userSchema = require('../schemas/userSchema');
 const User = new mongoose.model('Random', userSchema);
-
+const random = require('random-number');
 
 // Create User---------->
 router.post('/save', async (req, res) => {
@@ -43,7 +43,7 @@ router.get('/all', async(req, res)=>{
 
 //Get random user api------->
 router.get('/random', async(req, res)=>{
-
+    await User.find().Math.random() * User.length;
 });
 
 //Update one user----------------->

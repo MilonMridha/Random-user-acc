@@ -20,6 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.7",
     "nodemailer": "^6.7.7",
+    "random-number": "^0.0.9",
     "randomstring": "^1.2.2"
   }
 }
