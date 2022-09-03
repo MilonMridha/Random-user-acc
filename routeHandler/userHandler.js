@@ -33,7 +33,8 @@ router.post('/save', async (req, res) => {
 //Get all user api---------->
 router.get('/all', async(req, res)=>{
     try {
-        const users = await User.find()
+        const pageSize = req.body.pageSize;
+        const users = await User.find({}).limit(pageSize);
         res.send(users)
     } catch (error) {
         console.log('Error::', error)
